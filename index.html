@@ -5,6 +5,7 @@
     <title>Practice Project</title>
 </head>
 <body>
+    <button id="openMenu"></button>
     <section id="leftMenu">
         <form name="sortForm">
             <input type="search" placeholder="search:" id="search">
@@ -22,7 +23,36 @@
         </form>
     </section>
     <section id="mainContent">
-
+        <table>
+            <thead>
+                <tr>
+                    <td>project name</td>
+                    <td>due date</td>
+                    <td>created</td>
+                    <td>members</td>
+                    <td>type</td>
+                    <td>status</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>project name</td>
+                    <td>due date</td>
+                    <td>created</td>
+                    <td>members</td>
+                    <td>type</td>
+                    <td>status</td>
+                </tr>
+                <tr>
+                    <td>project name</td>
+                    <td>due date</td>
+                    <td>created</td>
+                    <td>members</td>
+                    <td>type</td>
+                    <td>status</td>
+                </tr>
+            </tbody>
+        </table>
     </section>
     <section id="rightMenu">
         <form name="addingForm">
@@ -31,13 +61,14 @@
             <input type="date" name="created">
             <input type="text" name="members" placeholder="members">
             <select name="type">
+                <option value="" disabled selected hidden>type:</option>
                 <option value="web">web</option>
                 <option value="desktop">desktop</option>
                 <option value="mobile">mobile</option>
                 <option value="support">support</option>
             </select>
             <select name="customer">
-
+                <option value="" disabled selected hidden>customer:</option>
             </select>
             <button id="create">create</button>
         </form>
