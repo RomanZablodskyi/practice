@@ -5,11 +5,11 @@
     <title>Practice Project</title>
 </head>
 <body>
-<button id="controlLeftMenu"></button>
+<div class="controlLeftMenu"></div>
 <section id="leftMenu">
     <form name="sortForm">
-        <input type="search" placeholder="search:" id="search">
-        <section id="checkboxSection">
+        <input type="search" placeholder="search:" name="search">
+        <div class="checkboxSection">
             <label for="web">web</label>
             <input type="checkbox" value="web" id="web">
             <label for="desktop">desktop</label>
@@ -18,8 +18,8 @@
             <input type="checkbox" value="mobile" id="mobile">
             <label for="support">support</label>
             <input type="checkbox" value="support" id="support">
-        </section>
-        <input type="date" class="date-field">
+        </div>
+        <input type="text" placeholder="12-04-1986" class="date-field" >
     </form>
 </section>
 <article>
@@ -57,21 +57,25 @@
 </article>
 <section id="rightMenu">
     <form name="addingForm">
-        <input type="text" name="projectName" placeholder="project name:">
-        <input type="date" name="dueDate">
-        <input type="date" name="created">
-        <input type="text" name="members" placeholder="members">
-        <select name="type">
-            <option disabled selected hidden>type:</option>
-            <option value="web">web</option>
-            <option value="desktop">desktop</option>
-            <option value="mobile">mobile</option>
-            <option value="support">support</option>
-        </select>
-        <select name="customer">
-            <option disabled selected hidden>customer:</option>
-        </select>
-        <button id="create">create</button>
+        <input type="text" placeholder="project name:">
+        <input type="text" placeholder="dueDate" class="date-field">
+        <input type="text" placeholder="created" class="date-field">
+        <input type="text" placeholder="members">
+        <div class="select">
+            <p class="selected">type:</p>
+            <p>web</p>
+            <p>desktop</p>
+            <p>mobile</p>
+            <p>support</p>
+        </div>
+        <div class="select">
+            <p class="selected">customer:</p>
+            <p>john</p>
+            <p>devid</p>
+            <p>bill</p>
+            <p>alehandro rohas</p>
+        </div>
+        <button name="create">create</button>
     </form>
 </section>
 
