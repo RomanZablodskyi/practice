@@ -5,7 +5,7 @@
     <title>Practice Project</title>
 </head>
 <body>
-<div class="controlLeftMenu"></div>
+<button class="controlLeftMenu"></button>
 <section id="leftMenu">
     <form name="sortForm">
         <input type="search" placeholder="search:" name="search">
@@ -61,20 +61,20 @@
         <input type="text" placeholder="dueDate" class="date-field">
         <input type="text" placeholder="created" class="date-field">
         <input type="text" placeholder="members">
-        <div class="select">
-            <p class="selected">type:</p>
-            <p>web</p>
-            <p>desktop</p>
-            <p>mobile</p>
-            <p>support</p>
-        </div>
-        <div class="select">
-            <p class="selected">customer:</p>
-            <p>john</p>
-            <p>devid</p>
-            <p>bill</p>
-            <p>alehandro rohas</p>
-        </div>
+        <select name="type">
+            <option value="" selected>type:</option>
+            <option value="web">web</option>
+            <option value="desktop">desktop</option>
+            <option value="mobile">mobile</option>
+            <option value="support">support</option>
+        </select>
+        <select name="customer">
+            <option value="">customer:</option>
+            <option value="john">john</option>
+            <option value="devid">devid</option>
+            <option value="bill">bill</option>
+            <option value="rohas">alehandro rohas</option>
+        </select>
         <button name="create">create</button>
     </form>
 </section>
