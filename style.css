@@ -14,10 +14,10 @@ body {
 }
 
 article {
+    position: absolute;
     width: 94%;
-    left: 3%;
+    right: 3%;
     font-size: 18px;
-    position: relative;
     background-color: rgb(10,11,13);
     transition: 0.7s ease-in-out;
 }
@@ -204,12 +204,10 @@ footer {
     /*transform-origin: right;*/
 }
 
-.menuCE {
-    width: 20%;
-    height: 800px;
-    right: -20%;
-    position: absolute;
-    box-sizing: border-box;
-    background-color: black;
-    transition: 0.7s ease-in-out;
+.openMenu {
+    transform: translateX(101%);
+}
+
+.shrinkArticle {
+    width: 79%;
 }
