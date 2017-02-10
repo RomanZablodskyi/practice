@@ -1,0 +1,25 @@
+{
+  "projects": [
+    {
+      "project name": "test",
+      "due date": "12-03-1984",
+      "created": "12-04-1984",
+      "members": "Ole Nole, Bobo Obob",
+      "type": ["web", "mobile"],
+      "status": true,
+      "customer": "John"
+    }
+  ],
+  "type": [
+    "web",
+    "mobile",
+    "desktop",
+    "support"
+  ],
+  "customers": [
+    "John",
+    "David",
+    "Bill",
+    "Alehandro Rohas"
+  ]
+}
