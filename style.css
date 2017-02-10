@@ -19,6 +19,7 @@ article {
     font-size: 18px;
     position: relative;
     background-color: rgb(10,11,13);
+    transition: 0.7s ease-in-out;
 }
 
 #scroller {
@@ -90,6 +91,7 @@ article .row p{
 
 /*Making first column more wider, text bigger */
 article .row p:nth-child(1) {
+    width: 14%;
     padding-left: 1%;
     font-weight: 600;
     text-align: left;
@@ -174,8 +176,8 @@ footer {
 .menuClick {
     display: block;
     position: absolute;
-    height: 30px;
-    width: 30px;
+    height: 17px;
+    width: 26px;
     left: 0.5%;
     top: 2.5%;
     background-repeat: no-repeat;
@@ -190,11 +192,24 @@ footer {
 }
 
 .menu {
-    position: absolute;
     width: 15%;
     height: 600px;
+    position: absolute;
     /*display: none;*/
-    border: 1px solid red;
+    background-color: rgb(178, 201, 246);;
     top: 6%;
-    left: 5px;
+    left: -15%;
+    box-sizing: border-box;
+    transition: 0.7s ease-in-out;
+    /*transform-origin: right;*/
+}
+
+.menuCE {
+    width: 20%;
+    height: 800px;
+    right: -20%;
+    position: absolute;
+    box-sizing: border-box;
+    background-color: black;
+    transition: 0.7s ease-in-out;
 }
