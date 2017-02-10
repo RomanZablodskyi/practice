@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Practice Project</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="./iscroll.js"></script>
+    <script type="text/javascript" src="./demoUtils.js"></script>
+    <script type="text/javascript">
+
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', { mouseWheel: true });
+            myScroll.options.mouseWheelSpeed = 5;
+            var i = myScroll.options.mouseWheelSpeed;
+            //debugger;
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, isPassive() ? {
+                capture: false,
+                passive: false
+            } : false);
+    </script>
+
 </head>
-<body>
-<button class="controlLeftMenu"></button>
+<body onload="loaded()">
+<!--<button class="controlLeftMenu"></button>
 <section id="leftMenu">
     <form name="sortForm">
         <input type="search" placeholder="search:" name="search">
@@ -21,41 +39,315 @@
         </div>
         <input type="text" placeholder="12-04-1986" class="date-field" >
     </form>
-</section>
+</section>-->
+
+<div class="menu"></div>
+<button class="menuClick"></button>
+
 <article>
-    <div class="table-heading">
+    <div class="row table-heading">
         <p>project name</p>
+        <div class="wall"></div>
         <p>due date</p>
         <p>created</p>
         <p>members</p>
         <p>type</p>
         <p>status</p>
         <p>customer</p>
-        <button class="add-entry">A</button>
+        <button class="add-entry"></button>
     </div>
-    <hr>
-    <div>
-        <p>project name</p>
-        <p>due date</p>
-        <p>created</p>
-        <p>members</p>
-        <p>type</p>
-        <p>status</p>
-        <p>customer</p>
-        <button class="delete-entry">D</button>
-    </div>
-    <div>
-        <p>project name</p>
-        <p>due date</p>
-        <p>created</p>
-        <p>members</p>
-        <p>type</p>
-        <p>status</p>
-        <p>customer</p>
-        <button class="delete-entry">D</button>
+    <div  class="content" id="wrapper">
+        <div id="scroller">
+        <div class="row">
+            <p>project name</p>
+            <div class="wall"></div>
+            <p>due date</p>
+            <p>created</p>
+            <p>members</p>
+            <p>type</p>
+            <p>status</p>
+            <p>customer</p>
+            <button class="delete-entry"></button>
+        </div>
+        <div class="row">
+            <p>project name</p>
+            <div class="wall"></div>
+            <p>due date</p>
+            <p>created</p>
+            <p>members</p>
+            <p>type</p>
+            <p>status</p>
+            <p>customer</p>
+            <button class="delete-entry"></button>
+        </div>
+        <div class="row">
+            <p>project name</p>
+            <div class="wall"></div>
+            <p>due date</p>
+            <p>created</p>
+            <p>members</p>
+            <p>type</p>
+            <p>status</p>
+            <p>customer</p>
+            <button class="delete-entry"></button>
+        </div>
+        <div class="row">
+            <p>project name</p>
+            <div class="wall"></div>
+            <p>due date</p>
+            <p>created</p>
+            <p>members</p>
+            <p>type</p>
+            <p>status</p>
+            <p>customer</p>
+            <button class="delete-entry"></button>
+        </div>
+        <div class="row">
+            <p>project name</p>
+            <div class="wall"></div>
+            <p>due date</p>
+            <p>created</p>
+            <p>members</p>
+            <p>type</p>
+            <p>status</p>
+            <p>customer</p>
+            <button class="delete-entry"></button>
+        </div>
+        <div class="row">
+            <p>project name</p>
+            <div class="wall"></div>
+            <p>due date</p>
+            <p>created</p>
+            <p>members</p>
+            <p>type</p>
+            <p>status</p>
+            <p>customer</p>
+            <button class="delete-entry"></button>
+        </div>
+        <div class="row">
+            <p>project name</p>
+            <div class="wall"></div>
+            <p>due date</p>
+            <p>created</p>
+            <p>members</p>
+            <p>type</p>
+            <p>status</p>
+            <p>customer</p>
+            <button class="delete-entry"></button>
+        </div>
+        <div class="row">
+            <p>project name</p>
+            <div class="wall"></div>
+            <p>due date</p>
+            <p>created</p>
+            <p>members</p>
+            <p>type</p>
+            <p>status</p>
+            <p>customer</p>
+            <button class="delete-entry"></button>
+        </div>
+        <div class="row">
+            <p>project name</p>
+            <div class="wall"></div>
+            <p>due date</p>
+            <p>created</p>
+            <p>members</p>
+            <p>type</p>
+            <p>status</p>
+            <p>customer</p>
+            <button class="delete-entry"></button>
+        </div>
+        <div class="row">
+            <p>project name</p>
+            <div class="wall"></div>
+            <p>due date</p>
+            <p>created</p>
+            <p>members</p>
+            <p>type</p>
+            <p>status</p>
+            <p>customer</p>
+            <button class="delete-entry"></button>
+        </div>
+        <div class="row">
+            <p>project name</p>
+            <div class="wall"></div>
+            <p>due date</p>
+            <p>created</p>
+            <p>members</p>
+            <p>type</p>
+            <p>status</p>
+            <p>customer</p>
+            <button class="delete-entry"></button>
+        </div>
+        <div class="row">
+            <p>project name</p>
+            <div class="wall"></div>
+            <p>due date</p>
+            <p>created</p>
+            <p>members</p>
+            <p>type</p>
+            <p>status</p>
+            <p>customer</p>
+            <button class="delete-entry"></button>
+        </div>
+        <div class="row">
+            <p>project name</p>
+            <div class="wall"></div>
+            <p>due date</p>
+            <p>created</p>
+            <p>members</p>
+            <p>type</p>
+            <p>status</p>
+            <p>customer1</p>
+            <button class="delete-entry"></button>
+        </div>
+            <div class="row">
+                <p>project name</p>
+                <div class="wall"></div>
+                <p>due date</p>
+                <p>created</p>
+                <p>members</p>
+                <p>type</p>
+                <p>status</p>
+                <p>customer</p>
+                <button class="delete-entry"></button>
+            </div>
+            <div class="row">
+                <p>project name</p>
+                <div class="wall"></div>
+                <p>due date</p>
+                <p>created</p>
+                <p>members</p>
+                <p>type</p>
+                <p>status</p>
+                <p>customer</p>
+                <button class="delete-entry"></button>
+            </div>
+            <div class="row">
+                <p>project name</p>
+                <div class="wall"></div>
+                <p>due date</p>
+                <p>created</p>
+                <p>members</p>
+                <p>type</p>
+                <p>status</p>
+                <p>customer</p>
+                <button class="delete-entry"></button>
+            </div>
+            <div class="row">
+                <p>project name</p>
+                <div class="wall"></div>
+                <p>due date</p>
+                <p>created</p>
+                <p>members</p>
+                <p>type</p>
+                <p>status</p>
+                <p>customer</p>
+                <button class="delete-entry"></button>
+            </div>
+            <div class="row">
+                <p>project name</p>
+                <div class="wall"></div>
+                <p>due date</p>
+                <p>created</p>
+                <p>members</p>
+                <p>type</p>
+                <p>status</p>
+                <p>customer</p>
+                <button class="delete-entry"></button>
+            </div>
+            <div class="row">
+                <p>project name</p>
+                <div class="wall"></div>
+                <p>due date</p>
+                <p>created</p>
+                <p>members</p>
+                <p>type</p>
+                <p>status</p>
+                <p>customer</p>
+                <button class="delete-entry"></button>
+            </div>
+            <div class="row">
+                <p>project name</p>
+                <div class="wall"></div>
+                <p>due date</p>
+                <p>created</p>
+                <p>members</p>
+                <p>type</p>
+                <p>status</p>
+                <p>customer</p>
+                <button class="delete-entry"></button>
+            </div>
+            <div class="row">
+                <p>project name</p>
+                <div class="wall"></div>
+                <p>due date</p>
+                <p>created</p>
+                <p>members</p>
+                <p>type</p>
+                <p>status</p>
+                <p>customer</p>
+                <button class="delete-entry"></button>
+            </div>
+            <div class="row">
+                <p>project name</p>
+                <div class="wall"></div>
+                <p>due date</p>
+                <p>created</p>
+                <p>members</p>
+                <p>type</p>
+                <p>status</p>
+                <p>customer</p>
+                <button class="delete-entry"></button>
+            </div>
+            <div class="row">
+                <p>project name</p>
+                <div class="wall"></div>
+                <p>due date</p>
+                <p>created</p>
+                <p>members</p>
+                <p>type</p>
+                <p>status</p>
+                <p>customer</p>
+                <button class="delete-entry"></button>
+            </div>
+            <div class="row">
+                <p>project name</p>
+                <div class="wall"></div>
+                <p>due date</p>
+                <p>created</p>
+                <p>members</p>
+                <p>type</p>
+                <p>status</p>
+                <p>customer</p>
+                <button class="delete-entry"></button>
+            </div>
+            <div class="row">
+                <p>project name</p>
+                <div class="wall"></div>
+                <p>due date</p>
+                <p>created</p>
+                <p>members</p>
+                <p>type</p>
+                <p>status</p>
+                <p>customer</p>
+                <button class="delete-entry"></button>
+            </div>
+            <div class="row">
+                <p>project name</p>
+                <div class="wall"></div>
+                <p>due date</p>
+                <p>created</p>
+                <p>members</p>
+                <p>type</p>
+                <p>status</p>
+                <p>customer1</p>
+                <button class="delete-entry"></button>
+            </div>
+        </div>
     </div>
 </article>
-<section id="rightMenu">
+<!--<section id="rightMenu">
     <form name="addingForm">
         <input type="text" placeholder="project name:">
         <input type="text" placeholder="dueDate" class="date-field">
@@ -77,10 +369,11 @@
         </select>
         <button name="create">create</button>
     </form>
-</section>
+</section>-->
 
 <footer>
     <p>infopulse courses dashboard @ 2016</p>
 </footer>
+<script src="main.js"></script>
 </body>
 </html>
