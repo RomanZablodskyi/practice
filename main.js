@@ -2,81 +2,41 @@
  * Created by Vlad on 09.02.2017.
  */
 "use strict";
+let require = function(name, obj) {
+    let code = new Function("obj", exports.getJsFile(name));
+    code(obj);
+    return obj;
+};
 
-var myScroll,
+let myScroll,
+    app = require('./app.js', {}),
+    menu = document.querySelector('.menu'),
     menuClick = document.querySelector('.menuClick'),
     article = document.querySelector('article'),
-    menu = document.querySelector('.menu'),
-    clicked = false,
-    data;
+    btnName = document.querySelector('.name');
 
-function getData() {
-    var json, req = new XMLHttpRequest();
-    req.open("GET", "./projects.json", false);
-    req.onreadystatechange = function () {
-        if (req.readyState == 4) {
-            if(req.status == 200){
-                json = JSON.parse(req.responseText);
-            }
-        }
-    };
-    req.send(null);
-    return json;
-}
-
-function loaded () {
+let loaded = function() {
     myScroll = new IScroll('#wrapper', { mouseWheel: true });
     myScroll.options.mouseWheelSpeed = 5;
-    var i = myScroll.options.mouseWheelSpeed;
-}
+};
+
+window.addEventListener("load", loaded);
+
 document.addEventListener('touchmove', function (e) { e.preventDefault(); }, isPassive() ? {
         capture: false,
         passive: false
-    } : false);
-
+} : false);
 
 menuClick.addEventListener('click', function () {
-    if (!clicked) {
+    if (article.className != 'shrinkArticle') {
         article.className = "shrinkArticle";
         menu.className += " openMenu";
-        clicked = true;
-    } else  {
+    } else {
         article.className = "";
         menu.className = menu.className.slice(0,4);
-        clicked = false;
     }
 });
 
-data = getData();
+btnName.addEventListener('click', app.sort);
 
-function loadProjects(projects) {
-    var parent = document.querySelector('#scroller');
-    projects.forEach(function(e){
-        var row = document.createElement('div');
-        row.className = 'row';
-        var arr = Object.keys(e);
-        var div = document.createElement('div');
-        div.className = "wall";
-        var button = document.createElement('button');
-        button.className = "delete-entry";
-        for (var i = 0, a = 0; i < 9; i++) {
-            if (i == 1) {
-                row.appendChild(div);
-                continue;
-            } else if (i == 8) {
-                row.appendChild(button);
-                continue;
-            }
-            var p = document.createElement('p');
-            var str = arr[a];
-            p.innerHTML = e[str];
-            row.appendChild(p);
-            a++;
-        }
-        parent.appendChild(row);
-    });
-}
-
-loadProjects(data.projects);
-
-
+app.loadProjects();

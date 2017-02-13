@@ -1,138 +1,30 @@
 {
   "projects": [
     {
-      "project name": "test",
+      "project name": "n",
       "due date": "09-02-2017",
       "created": "12-03-2017",
       "members": "Ole Nole, Bobo Obob",
-      "type": ["web", "mobile"],
-      "status": true,
+      "type": "web",
+      "status": "in process",
       "customer": "John"
     },
     {
-      "project name": "test",
+      "project name": "a",
       "due date": "09-02-2017",
       "created": "12-03-2017",
       "members": "Ole Nole, Bobo Obob",
-      "type": ["web", "mobile"],
-      "status": true,
+      "type": "web",
+      "status": "in process",
       "customer": "John"
     },
     {
-      "project name": "test",
+      "project name": "b",
       "due date": "09-02-2017",
       "created": "12-03-2017",
       "members": "Ole Nole, Bobo Obob",
-      "type": ["web", "mobile"],
-      "status": true,
-      "customer": "John"
-    },
-    {
-      "project name": "test",
-      "due date": "09-02-2017",
-      "created": "12-03-2017",
-      "members": "Ole Nole, Bobo Obob",
-      "type": ["web", "mobile"],
-      "status": true,
-      "customer": "John"
-    },
-    {
-      "project name": "test",
-      "due date": "09-02-2017",
-      "created": "12-03-2017",
-      "members": "Ole Nole, Bobo Obob",
-      "type": ["web", "mobile"],
-      "status": true,
-      "customer": "John"
-    },
-    {
-      "project name": "test",
-      "due date": "09-02-2017",
-      "created": "12-03-2017",
-      "members": "Ole Nole, Bobo Obob",
-      "type": ["web", "mobile"],
-      "status": true,
-      "customer": "John"
-    },
-    {
-      "project name": "test",
-      "due date": "09-02-2017",
-      "created": "12-03-2017",
-      "members": "Ole Nole, Bobo Obob",
-      "type": ["web", "mobile"],
-      "status": true,
-      "customer": "John"
-    },
-    {
-      "project name": "test",
-      "due date": "09-02-2017",
-      "created": "12-03-2017",
-      "members": "Ole Nole, Bobo Obob",
-      "type": ["web", "mobile"],
-      "status": true,
-      "customer": "John"
-    },
-    {
-      "project name": "test",
-      "due date": "09-02-2017",
-      "created": "12-03-2017",
-      "members": "Ole Nole, Bobo Obob",
-      "type": ["web", "mobile"],
-      "status": true,
-      "customer": "John"
-    },
-    {
-      "project name": "test",
-      "due date": "09-02-2017",
-      "created": "12-03-2017",
-      "members": "Ole Nole, Bobo Obob",
-      "type": ["web", "mobile"],
-      "status": true,
-      "customer": "John"
-    },
-    {
-      "project name": "test",
-      "due date": "09-02-2017",
-      "created": "12-03-2017",
-      "members": "Ole Nole, Bobo Obob",
-      "type": ["web", "mobile"],
-      "status": true,
-      "customer": "John"
-    },
-    {
-      "project name": "test",
-      "due date": "09-02-2017",
-      "created": "12-03-2017",
-      "members": "Ole Nole, Bobo Obob",
-      "type": ["web", "mobile"],
-      "status": true,
-      "customer": "John"
-    },
-    {
-      "project name": "test",
-      "due date": "09-02-2017",
-      "created": "12-03-2017",
-      "members": "Ole Nole, Bobo Obob",
-      "type": ["web", "mobile"],
-      "status": true,
-      "customer": "John"
-    },
-    {
-      "project name": "test",
-      "due date": "09-02-2017",
-      "created": "12-03-2017",
-      "members": "Ole Nole, Bobo Obob",
-      "type": ["web", "mobile"],
-      "status": true,
-      "customer": "John"
-    },
-    {
-      "project name": "test",
-      "due date": "09-02-2017",
-      "created": "12-03-2017",
-      "members": "Ole Nole, Bobo Obob",
-      "type": ["web", "mobile"],
-      "status": true,
+      "type": "web",
+      "status": "in process",
       "customer": "John"
     }
   ],
