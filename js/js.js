@@ -1,6 +1,7 @@
 window.onload = function () {
 
-    var list = document.getElementsByTagName("ul"),
+    var data = exports.getJsonData("./projects.json"),
+        list = document.getElementsByTagName("ul"),
         dateFields = document.getElementsByClassName("date-field"),
         form = document.getElementsByName("addingForm")[0],
         formInputs = form.getElementsByTagName("input"),
@@ -9,8 +10,16 @@ window.onload = function () {
             type: []
         };
 
+    for(var i = 0; i < list.length; i++)
+        for(var key in data){
+            if(key != "projects"){
+                createListElem(list[i], data[key]);
+                i++;
+            }
+        }
+
     /*  datepicker  */
-    for(var i = 0; i < dateFields.length; i++){
+    for(i = 0; i < dateFields.length; i++){
         var elem = dateFields[i].getElementsByTagName("input")[0],
             pikaday = new Pikaday({
                 field: elem,
@@ -165,4 +174,12 @@ window.onload = function () {
         return unfilled;
     }
 
+    /*  create droplist elements*/
+    function createListElem(parent, data) {
+        for(var i = 0; i < data.length; i++){
+            var li = document.createElement("li");
+            li.textContent = data[i];
+            parent.appendChild(li);
+        }
+    }
 };
