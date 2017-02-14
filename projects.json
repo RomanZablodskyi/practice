@@ -2,7 +2,7 @@
   "projects": [
     {
       "project name": "n",
-      "due date": "09-02-2016",
+      "due date": "09-02-2018",
       "created": "12-03-2016",
       "members": "Ole",
       "type": "desctop",
@@ -11,7 +11,7 @@
     },
     {
       "project name": "a",
-      "due date": "09-02-2017",
+      "due date": "09-02-2018",
       "created": "12-03-2017",
       "members": "Ole Nole, Bobo Obob",
       "type": "web",
@@ -20,7 +20,7 @@
     },
     {
       "project name": "b",
-      "due date": "09-02-2017",
+      "due date": "04-01-2017",
       "created": "12-03-2015",
       "members": "Ole Nole, Bobo Obob",
       "type": "web",

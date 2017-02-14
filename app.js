@@ -1,10 +1,27 @@
 "use strict";
+
 let data = exports.getJsonData('./projects.json'),
     unsortedProjectsByName,
     unsortedProjectsByTime;
 
 obj.returnData = function() {
     return data;
+};
+
+obj.returnUnsortedProjectByTime = function() {
+    return unsortedProjectsByTime;
+};
+
+let _convertDate = function(str) {
+    let dateArr = str.split('-');
+    return new Date(dateArr[2], dateArr[1], dateArr[0]);
+};
+
+let _isExpired = function(e, tag) {
+        let dueDate = _convertDate(e['due date']);
+        if (dueDate.getTime() < Date.now()) {
+            tag.className += " expired-project";
+        }
 };
 
 let _createElem = function(tag, content, className) {
@@ -21,7 +38,8 @@ let _createElem = function(tag, content, className) {
 let _createRow = function(e) {
     const positionOfButton = 8,
         positionOfWall = 1,
-        numberOfColumns = 9;
+        numberOfColumns = 9,
+        positionStatus = 6;
 
     let arrColumns = Object.keys(e),
         row = _createElem('div', null, 'row'),
@@ -29,11 +47,18 @@ let _createRow = function(e) {
         div = _createElem('div', null, 'wall'),
         button = _createElem('button', null, 'delete-entry');
 
+    _isExpired(e, row);
     for (let i = 0, a = 0; i < numberOfColumns; i++) {
         if (i == positionOfWall) {
             docfrag.appendChild(div);
         } else if (i == positionOfButton) {
             docfrag.appendChild(button);
+        } else if (i == positionStatus) {
+            if (row.className.slice(4) == "expired-project")
+                docfrag.appendChild(_createElem('p', 'closed', null));
+            else
+                docfrag.appendChild(_createElem('p', 'in process', null));
+            a++;
         } else {
             docfrag.appendChild(_createElem('p', e[arrColumns[a]], null));
             a++;
@@ -63,6 +88,7 @@ let _deleteEntry = function(){
         }
     }
     unsortedProjectsByTime = JSON.parse(JSON.stringify(data.projects));
+
 };
 
 obj.loadProjects = function() {

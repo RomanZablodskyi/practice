@@ -2,16 +2,11 @@
  * Created by Vlad on 13.02.2017.
  */
 "use strict";
-let require = function(name, obj) {
-    let code = new Function("obj", exports.getJsFile(name));
-    code(obj);
-    return obj;
-};
+
 console.log(obj);
-let app = require('./app.js', {}),
-    data = app.returnData(),
+let data = app.returnData(),
     unsortedProjectsByName,
-    unsortedProjectsByTime;
+    unsortedProjectsByTime = app.returnUnsortedProjectByTime();
 
 let _clearContent = function() {
     window['scroller'].innerHTML = '';
