@@ -350,6 +350,7 @@ ul{
 }
 ul li{
     height: 3.75em;
+    line-height: 3.75em;
     background: #221203;
     text-align: center;
     overflow-x: scroll;
@@ -391,7 +392,8 @@ button[name="create"]{
     text-indent: 3.8em;
     line-height: 1.70em;
 }
-button[name="create"]{
+button[name="create"],
+#rightMenu ul li{
     cursor: pointer;
 }
 
