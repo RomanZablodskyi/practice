@@ -30,6 +30,7 @@ article {
     font-size: 18px;
     background-color: rgb(10,11,13);
     transition: 0.5s ease-in-out;
+    color: white;
 }
 
 #scroller {
@@ -60,6 +61,12 @@ article .table-heading {
     border-bottom: 2px solid rgb(115,115,115);
     color: rgb(230,120,23);
     font-weight: 600;
+}
+
+article .table-heading p:nth-child(1):hover,
+article .table-heading p:nth-child(4):hover{
+    color: white;
+    cursor: pointer;
 }
 
 /*Dash that divides project name from another content*/
@@ -166,24 +173,6 @@ footer {
     text-align: center;
 }
 
-@media(max-height: 800px){
-    .content {
-        height: 540px;
-    }
-}
-
-@media(min-height: 801px) and (max-height: 1200px) {
-    .content {
-        height: 840px;
-    }
-}
-
-@media (min-height: 1201px) {
-    .content {
-        height: 1000px;
-    }
-}
-
 .control-left-menu {
     display: block;
     position: absolute;
@@ -224,6 +213,7 @@ input, label, li, button, footer p{
     padding: 0 2.1%;
     background-color: #000000;
     overflow-y: scroll;
+    z-index: 2;
 }
 #leftMenu{
     left: -19.2%;
@@ -441,5 +431,35 @@ button[name="create"]{
     }
     .checkbox-section label{
         left: .8em;
+    }
+}
+
+@media(max-height: 800px){
+    .content {
+        height: 540px;
+    }
+
+    .control-left-menu {
+        left: 0.6%;
+    }
+}
+
+@media(min-height: 801px) and (max-height: 1200px) {
+    .content {
+        height: 840px;
+    }
+
+    .control-left-menu {
+        left: 1.1%;
+    }
+}
+
+@media (min-height: 1201px) {
+    .content {
+        height: 1000px;
+    }
+
+    .control-left-menu {
+        left: 1.1%;
     }
 }

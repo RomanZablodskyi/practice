@@ -1,9 +1,11 @@
 "use strict";
-let data = exports.getJsonData('./projects.json');
+let data = exports.getJsonData('./projects.json'),
+    unsortedProjectsByName,
+    unsortedProjectsByTime;
 
-let _clearContent = function() {
-    window['scroller'].innerHTML = '';
-}
+obj.returnData = function() {
+    return data;
+};
 
 let _createElem = function(tag, content, className) {
     let el = document.createElement(tag);
@@ -60,7 +62,7 @@ let _deleteEntry = function(){
             length--;
         }
     }
-    console.log(data.projects);
+    unsortedProjectsByTime = JSON.parse(JSON.stringify(data.projects));
 };
 
 obj.loadProjects = function() {
@@ -71,30 +73,4 @@ obj.loadProjects = function() {
     });
 };
 
-obj.sort = function() {
-    let arr = _getNames();
-    arr.sort();
-    let projects = [];
-    arr.forEach(function(e) {
-        projects.push(_findEl(e));
-    });
-    data.projects = projects;
-    _clearContent();
-    obj.loadProjects();
-};
 
-let _findEl = function(key) {
-    let el;
-    data.projects.forEach(function (e) {
-       if (key == e['project name']) {
-           el = e;
-       }
-    });
-    return el;
-};
-
-let _getNames= function() {
-    return data.projects.map(function(e) {
-        return e['project name'];
-    });
-};

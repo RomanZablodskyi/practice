@@ -10,10 +10,9 @@ let require = function(name, obj) {
 
 let myScroll,
     app = require('./app.js', {}),
-    menu = document.querySelector('.menu'),
-    menuClick = document.querySelector('.menuClick'),
-    article = document.querySelector('article'),
-    btnName = document.querySelector('.name');
+    sort = require('./sort.js', {}),
+    columnHeadName = document.querySelector('.table-heading p:nth-child(1)'),
+    columnHeadCreated = document.querySelector('.table-heading p:nth-child(4)');
 
 let loaded = function() {
     myScroll = new IScroll('#wrapper', { mouseWheel: true });
@@ -27,16 +26,7 @@ document.addEventListener('touchmove', function (e) { e.preventDefault(); }, isP
         passive: false
 } : false);
 
-menuClick.addEventListener('click', function () {
-    if (article.className != 'shrinkArticle') {
-        article.className = "shrinkArticle";
-        menu.className += " openMenu";
-    } else {
-        article.className = "";
-        menu.className = menu.className.slice(0,4);
-    }
-});
-
-btnName.addEventListener('click', app.sort);
+columnHeadName.addEventListener('click', sort.sortName);
+columnHeadCreated.addEventListener('click', sort.sortCreated);
 
 app.loadProjects();
