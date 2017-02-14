@@ -1,3 +1,12 @@
+@font-face {
+    src: url(Fonts/calibri.ttf);
+    font-family: Calibri;
+}
+@font-face {
+    src: url(Fonts/calibrib.ttf);
+    font-family: Calibri;
+    font-weight: bold;
+}
 *{
     margin: 0;
     padding: 0;
