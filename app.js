@@ -1,7 +1,6 @@
 "use strict";
 
 let data = exports.getJsonData('./projects.json'),
-    unsortedProjectsByName,
     unsortedProjectsByTime;
 
 obj.returnData = function() {
@@ -88,7 +87,6 @@ let _deleteEntry = function(){
         }
     }
     unsortedProjectsByTime = JSON.parse(JSON.stringify(data.projects));
-
 };
 
 obj.loadProjects = function() {

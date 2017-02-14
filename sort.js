@@ -3,10 +3,9 @@
  */
 "use strict";
 
-console.log(obj);
 let data = app.returnData(),
     unsortedProjectsByName,
-    unsortedProjectsByTime = app.returnUnsortedProjectByTime();
+    unsortedProjectsByTime;
 
 let _clearContent = function() {
     window['scroller'].innerHTML = '';
@@ -19,13 +18,15 @@ obj.sortName = function() {
         let arr = _getNames(),
             projects = [];
         this.className = 'sorted';
-        unsortedProjectsByName = data.projects;
+        unsortedProjectsByName = _updateDataProjects().projects;
         arr.sort();
         arr.forEach(function(e) {
             projects.push(_findEl(e));
         });
         data.projects = projects;
     } else {
+        if (unsortedProjectsByName.length > _updateDataProjects().projects.length)
+            unsortedProjectsByName = _updateDataProjects().projects;
         this.className = '';
         data.projects = unsortedProjectsByName;
     }
@@ -33,14 +34,20 @@ obj.sortName = function() {
     app.loadProjects();
 };
 
+let _updateDataProjects = function() {
+    return app.returnData();
+};
+
 obj.sortCreated = function() {
     if (data.projects.length <= 1)
         return;
     if (this.className !== 'sorted') {
-        unsortedProjectsByTime =  JSON.parse(JSON.stringify(data.projects));
+        unsortedProjectsByTime =  JSON.parse(JSON.stringify(_updateDataProjects().projects));
         this.className = 'sorted';
         data.projects = _sortTime();
     } else {
+        if (unsortedProjectsByTime.length > _updateDataProjects().projects.length)
+            unsortedProjectsByTime = JSON.parse(JSON.stringify(_updateDataProjects().projects));
         data.projects = unsortedProjectsByTime;
         this.className = '';
     }
