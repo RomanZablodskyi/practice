@@ -95,7 +95,7 @@ window.onload = function () {
     });
 
     /*  hide right menu*/
-    /*document.body.addEventListener("click", function (e) {
+    document.body.addEventListener("click", function (e) {
        var screenWidth = document.documentElement.clientWidth,
            mouseCoordX = e.pageX,
            rightMenu = document.getElementById("rightMenu");
@@ -104,7 +104,7 @@ window.onload = function () {
            rightMenu.style.animation = "slideLeft 1.5s";
            rightMenu.style.right = "-19.2%";
        }
-    });*/
+    });
 
 
     /*  search by text  */
@@ -117,6 +117,20 @@ window.onload = function () {
     /*  search by date  */
     document.getElementsByName("dateSearch")[0].addEventListener("change", function () {
         searchParams.date = this.value;
+    });
+
+    document.getElementsByClassName("control-left-menu")[0].addEventListener("click", function () {
+        var leftMenu = document.getElementById("leftMenu");
+        if(leftMenu.style.left != "0px")
+            leftMenu.style.left = "0";
+        else
+            leftMenu.style.left = "-19.2%"
+    });
+
+    document.getElementsByClassName("add-entry")[0].addEventListener("click", function () {
+        var rightMenu = document.getElementById("rightMenu");
+        if(rightMenu.style.right != "0px")
+            rightMenu.style.right = "0";
     });
 
     function changeClasses(nodeElement, correctClass, newClass) {
