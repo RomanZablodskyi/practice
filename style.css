@@ -371,7 +371,8 @@ button[name="create"]{
     text-align: left;
     text-indent: 1.9em;
 }
-button[name="create"]{
+button[name="create"],
+#rightMenu ul li{
     cursor: pointer;
 }
 
