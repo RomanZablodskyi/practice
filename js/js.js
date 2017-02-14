@@ -120,11 +120,16 @@ window.onload = function () {
     });
 
     document.getElementsByClassName("control-left-menu")[0].addEventListener("click", function () {
-        var leftMenu = document.getElementById("leftMenu");
-        if(leftMenu.style.left != "0px")
+        var leftMenu = document.getElementById("leftMenu"),
+            article = document.getElementsByTagName("article")[0];
+        if(leftMenu.style.left != "0px"){
             leftMenu.style.left = "0";
-        else
-            leftMenu.style.left = "-19.2%"
+            article.style.width = "77.8%";
+        }
+        else{
+            leftMenu.style.left = "-19.2%";
+            article.style.width = "94%";
+        }
     });
 
     document.getElementsByClassName("add-entry")[0].addEventListener("click", function () {

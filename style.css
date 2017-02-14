@@ -29,7 +29,7 @@ article {
     right: 3%;
     font-size: 18px;
     background-color: rgb(10,11,13);
-    transition: 0.7s ease-in-out;
+    transition: 0.5s ease-in-out;
 }
 
 #scroller {
@@ -229,12 +229,12 @@ input, label, li, button, footer p{
     left: -19.2%;
     padding-top: 7.875em;
     z-index: 2;
-    transition: left, 0.7s, cubic-bezier(0, 0, 1, 1);
+    transition: left, 0.7s, ease-in-out;
 }
 #rightMenu{
     right: -19.2%;
     padding-top: 7.375em;
-    transition: right, 0.7s, cubic-bezier(0, 0, 1, 1);
+    transition: right, 0.7s, ease-in-out;
 }
 #rightMenu input, #rightMenu ul, button[name="create"]{
     margin-bottom: 1.875em;
