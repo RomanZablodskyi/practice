@@ -3,16 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Practice Project</title>
+    <link rel="stylesheet" href="css/pikaday.css">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="./iscroll.js"></script>
     <script type="text/javascript" src="./demoUtils.js"></script>
 </head>
 <body>
-<div class="menu">
-    <button class="name">name</button>
-    <button class="due-date">due-date</button>
-</div>
-<button class="menuClick"></button>
+<button class="control-left-menu"></button>
+<section id="leftMenu">
+    <form name="sortForm">
+        <div class="wrapper search">
+            <input type="search" placeholder="search:" name="search">
+        </div>
+        <div class="checkbox-section">
+            <div>
+                <input type="checkbox" value="web" id="web">
+                <label for="web">web</label>
+            </div>
+            <div>
+                <input type="checkbox" value="desktop" id="desktop">
+                <label for="desktop">desktop</label>
+            </div>
+            <div>
+                <input type="checkbox" value="mobile" id="mobile">
+                <label for="mobile">mobile</label>
+            </div>
+            <div>
+                <input type="checkbox" value="support" id="support">
+                <label for="support">support</label>
+            </div>
+        </div>
+        <div class="wrapper date-field">
+            <input type="text" placeholder="12-04-1986" name="dateSearch"  pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" autocomplete="off">
+        </div>
+    </form>
+</section>
 
 <article>
     <div class="row table-heading">
@@ -31,10 +56,44 @@
         </div>
     </div>
 </article>
+    
+<section id="rightMenu">
+    <form name="addingForm">
+        <input type="text" placeholder="project name:" name="projectName">
+        <div class="wrapper date-field">
+            <input type="text" placeholder="due date" name="dueDate" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" autocomplete="off">
+        </div>
+        <div class="wrapper date-field">
+            <input type="text" placeholder="created" name="created" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" autocomplete="off">
+        </div>
+        <input type="text" placeholder="members" name="members">
+        <ul class="wrapper closed">
+            <li class="selected">type:</li>
+            <li>web</li>
+            <li>desctop</li>
+            <li>mobile</li>
+            <li>support</li>
+        </ul>
+
+        <ul class="wrapper closed">
+            <li class="selected">customer:</li>
+            <li>john</li>
+            <li>devid</li>
+            <li>bill</li>
+            <li>alehandro rohas</li>
+        </ul>
+
+        <button name="create" disabled>create</button>
+    </form>
+</section>
+    
 <footer>
     <p>infopulse courses dashboard @ 2016</p>
 </footer>
+    
 <script src="getFile.js"></script>
 <script src="main.js"></script>
+<script src="js/pikaday.js"></script>
+<script src="js/js.js"></script>
 </body>
 </html>
