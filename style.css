@@ -331,6 +331,7 @@ ul{
 }
 ul li{
     height: 3.75em;
+    line-height: 3.75em;
     background: #221203;
     text-align: center;
     overflow-x: scroll;
