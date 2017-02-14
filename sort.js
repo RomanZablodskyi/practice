@@ -25,7 +25,7 @@ obj.sortName = function() {
         });
         data.projects = projects;
     } else {
-        if (unsortedProjectsByName.length > _updateDataProjects().projects.length)
+        if (unsortedProjectsByName.length !== _updateDataProjects().projects.length)
             unsortedProjectsByName = _updateDataProjects().projects;
         this.className = '';
         data.projects = unsortedProjectsByName;
@@ -46,7 +46,7 @@ obj.sortCreated = function() {
         this.className = 'sorted';
         data.projects = _sortTime();
     } else {
-        if (unsortedProjectsByTime.length > _updateDataProjects().projects.length)
+        if (unsortedProjectsByTime.length !== _updateDataProjects().projects.length)
             unsortedProjectsByTime = JSON.parse(JSON.stringify(_updateDataProjects().projects));
         data.projects = unsortedProjectsByTime;
         this.className = '';
