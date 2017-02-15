@@ -27,11 +27,7 @@ window.onload = function () {
                 field: elem,
                 firstDay: 1,
                 onSelect: function () {
-                    var dateVar = this.getDate(),
-                        date = dateVar.getDate() < 10 ? "0" + dateVar.getDate() : dateVar.getDate(),
-                        month = (dateVar.getMonth() + 1) < 10 ? "0" + (dateVar.getMonth() + 1) : (dateVar.getMonth() + 1);
-
-                    this._o.field.value = month + "-" + date + "-" + dateVar.getFullYear();
+                    this._o.field.value = convertDate(this.getDate());
                 }
             });
     }
@@ -147,6 +143,7 @@ window.onload = function () {
     /*  search by date  */
     document.getElementsByName("dateSearch")[0].addEventListener("change", function () {
         searchParams.date = this.value;
+        console.log(convertDate(this.value));
     });
 
     /*  show/hide left menu*/
@@ -204,5 +201,14 @@ window.onload = function () {
             li.textContent = data[i];
             parent.appendChild(li);
         }
+    }
+
+    function convertDate(dateStr) {
+        var date = typeof dateStr == Date ? dateStr : new Date(dateStr),
+            day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate(),
+            month = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1),
+            year = date.getFullYear();
+
+        return month + "-" + day + "-" + year;
     }
 };
