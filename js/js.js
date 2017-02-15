@@ -120,7 +120,9 @@ window.onload = function () {
     document.getElementsByName("search")[0].addEventListener("keydown", function (e) {
         if(e.keyCode == "13"){
             searchParams.text = this.value;
+            debugger;
         }
+        debugger;
     });
 
     /*  search by date  */

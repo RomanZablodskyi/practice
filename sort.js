@@ -18,6 +18,7 @@ obj.sortName = function() {
         let arr = _getNames(),
             projects = [];
         this.className = 'sorted';
+        //Updating data in case if smt was deleted or added
         unsortedProjectsByName = _updateDataProjects().projects;
         arr.sort();
         arr.forEach(function(e) {
@@ -42,6 +43,7 @@ obj.sortCreated = function() {
     if (data.projects.length <= 1)
         return;
     if (this.className !== 'sorted') {
+        //Creating unlinked copy of object
         unsortedProjectsByTime =  JSON.parse(JSON.stringify(_updateDataProjects().projects));
         this.className = 'sorted';
         data.projects = _sortTime();

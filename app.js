@@ -7,9 +7,6 @@ obj.returnData = function() {
     return data;
 };
 
-obj.returnUnsortedProjectByTime = function() {
-    return unsortedProjectsByTime;
-};
 
 let _convertDate = function(str) {
     let dateArr = str.split('-');
@@ -53,6 +50,7 @@ let _createRow = function(e) {
         } else if (i == positionOfButton) {
             docfrag.appendChild(button);
         } else if (i == positionStatus) {
+            //removing 'row' from comparison of class names
             if (row.className.slice(4) == "expired-project")
                 docfrag.appendChild(_createElem('p', 'closed', null));
             else
@@ -96,5 +94,6 @@ obj.loadProjects = function() {
         parent.appendChild(_createRow(e));
     });
 };
+
 
 
