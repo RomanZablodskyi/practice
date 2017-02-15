@@ -37,7 +37,7 @@ obj.sortName = function() {
 };
 
 let _updateDataProjects = function() {
-    return app.returnData();
+    return app.returnData()
 };
 
 obj.sortCreated = function() {
