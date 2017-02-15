@@ -75,8 +75,11 @@ window.onload = function () {
             pikaday = new Pikaday({
                 field: elem,
                 firstDay: 1,
+                minDate: new Date(2000, 0, 1),
+                maxDate: new Date(2020, 11, 31),
                 onSelect: function () {
                     this._o.field.value = convertDate(this.getDate());
+                    console.log(this);
                 }
             });
     }
@@ -151,7 +154,7 @@ window.onload = function () {
 
         for(var i = 0; i < formInputs.length; i++){
             if(formInputs[i].value != "") {
-                newObject[keys[pos]] = formInputs[i].value;
+                newObject[keys[pos]] = formInputs[i].value.replace(/<[^>]+>/g,'');
                 formInputs[i].value = "";
                 pos++;
             }
@@ -168,7 +171,7 @@ window.onload = function () {
                     case 0: text = "type:"; break;
                     case 1: text = "customer:"; break;
                 }
-                formLists[i].textContent = text
+                formLists[i].textContent = text;
 
                 pos++;
             }
