@@ -152,15 +152,24 @@ window.onload = function () {
         for(var i = 0; i < formInputs.length; i++){
             if(formInputs[i].value != "") {
                 newObject[keys[pos]] = formInputs[i].value;
+                formInputs[i].value = "";
                 pos++;
             }
         }
 
         for(i = 0; i < formLists.length; i++){
             if(formLists[i].textContent != "type:" || formLists[i].textContent != "customer:"){
+                var text = "";
                 if(keys[pos] == "status")
                     pos++;
                 newObject[keys[pos]] = formLists[i].textContent;
+
+                switch(i){
+                    case 0: text = "type:"; break;
+                    case 1: text = "customer:"; break;
+                }
+                formLists[i].textContent = text
+
                 pos++;
             }
         }
@@ -172,13 +181,15 @@ window.onload = function () {
 
     /*  hide right menu*/
     document.body.addEventListener("click", function (e) {
-       var screenWidth = document.documentElement.clientWidth,
-           mouseCoordX = e.pageX,
-           rightMenu = document.getElementById("rightMenu");
+        var screenWidth = document.documentElement.clientWidth,
+            screenHeight = document.documentElement.clientHeight,
+            mouseCoordX = e.pageX,
+            mouseCoordY = e.pageY,
+            rightMenu = document.getElementById("rightMenu");
 
-       if(rightMenu.offsetLeft != screenWidth && mouseCoordX < screenWidth * 0.808){
-           rightMenu.style.right = "-19.2%";
-       }
+        if(rightMenu.offsetLeft != screenWidth && (mouseCoordX < screenWidth * 0.808 || mouseCoordY > screenHeight - 50)){
+            rightMenu.style.right = "-19.2%";
+        }
     });
 
     /*  search by text  */
