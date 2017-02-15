@@ -11,6 +11,7 @@ let require = function(name, obj) {
 let myScroll,
     app = require('./app.js', {}),
     sort = require('./sort.js', {}),
+    js = require('./js/js.js', {}),
     columnHeadName = document.querySelector('.table-heading p:nth-child(1)'),
     columnHeadCreated = document.querySelector('.table-heading p:nth-child(4)');
 
@@ -26,7 +27,7 @@ document.addEventListener('touchmove', function (e) { e.preventDefault(); }, isP
         passive: false
 } : false);
 
-columnHeadName.addEventListener('click', sort.sortName);
+columnHeadName.addEventListener('click',sort.sortName);
 columnHeadCreated.addEventListener('click', sort.sortCreated);
 
 app.loadProjects();

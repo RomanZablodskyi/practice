@@ -1,12 +1,20 @@
 "use strict";
 
 let data = exports.getJsonData('./projects.json'),
-    unsortedProjectsByTime;
+    unsortedProjectsByTime,
+    unsearchedProjects;
 
 obj.returnData = function() {
     return data;
 };
 
+obj.setData = function(e) {
+    data = e;
+};
+
+let _clearContent = function() {
+    window['scroller'].innerHTML = '';
+};
 
 let _convertDate = function(str) {
     let dateArr = str.split('-');
@@ -95,5 +103,80 @@ obj.loadProjects = function() {
     });
 };
 
+obj.search = function(params) {
+    if (params.text !== "back") {
+        unsearchedProjects = JSON.parse(JSON.stringify(data.projects));
+        data.projects = _findElByParams(data.projects, params.text, params.type, params.date);
+    } else {
+        data.projects = unsearchedProjects;
+    }
+    _clearContent();
+    obj.loadProjects();
+};
 
+let _findElByParams = function(info, text, type, date) {
+    let arr = [];
+    if (text) {
+        _findByText(text, info).forEach(function(e) {
+            arr.push(e);
+        });
+    }
+    if (type.length > 0) {
+        let i;
+        arr.length > 0 ? i = arr : i = info;
+        _findByType(type, i).forEach(function(e) {
+            arr.push(e);
+        });
+    }
+    if (date) {
+        let i;
+        arr.length > 0 ? i = arr : i = info;
+        _findByDate(date, i).forEach(function(e) {
+            arr.push(e);
+        });
+    }
+    return arr;
+};
+
+let _findByText = function(text, arr) {
+    let el = [];
+    arr.forEach(function (e) {
+        if (text == e['project name']) {
+            el.push(e);
+        }
+    });
+    return el;
+};
+
+let _findByType = function(type, arr) {
+    let el = [];
+    arr.forEach(function(e) {
+        if (_containsType(e, type)) {
+            el.push(e);
+        }
+    });
+    return el;
+};
+
+let _containsType = function(el, type) {
+    let rt = false;
+    type.forEach(function(t) {
+       if (t == el['type']) {
+           rt = true;
+       }
+    });
+    return rt;
+};
+
+let _findByDate = function(date, arr) {
+    let el = [];
+    arr.forEach(function(e) {
+        debugger;
+        if (e['due date'] == date || e['created'] == date) {
+            el.push(e);
+        }
+    });
+    debugger;
+    return el;
+};
 

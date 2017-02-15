@@ -3,7 +3,7 @@
  */
 "use strict";
 
-let data = app.returnData(),
+let data,
     unsortedProjectsByName,
     unsortedProjectsByTime;
 
@@ -12,6 +12,7 @@ let _clearContent = function() {
 };
 
 obj.sortName = function() {
+    data = app.returnData();
     if (data.projects.length <= 1)
         return;
     if (this.className !== 'sorted') {
@@ -40,6 +41,7 @@ let _updateDataProjects = function() {
 };
 
 obj.sortCreated = function() {
+    data = app.returnData();
     if (data.projects.length <= 1)
         return;
     if (this.className !== 'sorted') {
@@ -65,7 +67,7 @@ let _sortTime = function() {
 
 let _convertDate = function(str) {
     let dateArr = str.split('-');
-    return new Date(dateArr[2], dateArr[1], dateArr[0]);
+    return new Date(dateArr[2], dateArr[0], dateArr[1]);
 };
 
 let _findEl = function(key) {
