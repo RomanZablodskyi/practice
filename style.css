@@ -30,6 +30,9 @@ article {
     font-size: 18px;
     background-color: rgb(10,11,13);
     transition: 0.5s ease-in-out;
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
     color: white;
 }
 
@@ -123,16 +126,12 @@ article .row p:nth-child(1) {
     text-align: left;
 }
 
-article .expired-project p:nth-child(1) {
-    width: 15%;
-}
-
 article .content .row:hover {
     background-color: rgb(53,62,58);
 }
 
 article .expired-project  .wall {
-    display: none;
+    opacity: 0;
 }
 
 /*Buttons*/
@@ -236,11 +235,17 @@ input, label, li, button, footer p{
     padding-top: 7.875em;
     z-index: 2;
     transition: left, 0.7s, ease-in-out;
+    -webkit-transition: left, 0.7s, ease-in-out;
+    -moz-transition: left, 0.7s, ease-in-out;
+    -o-transition: left, 0.7s, ease-in-out;
 }
 #rightMenu{
     right: -19.2%;
     padding-top: 7.375em;
     transition: right, 0.7s, ease-in-out;
+    -webkit-transition: left, 0.7s, ease-in-out;
+    -moz-transition: left, 0.7s, ease-in-out;
+    -o-transition: left, 0.7s, ease-in-out;
 }
 #rightMenu input, #rightMenu ul, button[name="create"]{
     margin-bottom: 1.875em;
@@ -297,9 +302,7 @@ input::-moz-placeholder
     right: .4375em;
     background-image: url(Images/dateIcon.png);
 }
-input[type="search"]::-webkit-input-placeholder{
-    color: #7f7a76;
-}
+input[type="search"]::-webkit-input-placeholder,
 input[type="search"]::-moz-placeholder{
     color: #7f7a76;
 }
