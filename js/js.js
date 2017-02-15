@@ -126,7 +126,6 @@ window.onload = function () {
            rightMenu = document.getElementById("rightMenu");
 
        if(rightMenu.offsetLeft != screenWidth && mouseCoordX < screenWidth * 0.808){
-           rightMenu.style.animation = "slideLeft 1.5s";
            rightMenu.style.right = "-19.2%";
        }
     });
@@ -144,6 +143,7 @@ window.onload = function () {
         searchParams.date = this.value;
     });
 
+    /*  show/hide left menu*/
     document.getElementsByClassName("control-left-menu")[0].addEventListener("click", function () {
         var leftMenu = document.getElementById("leftMenu"),
             article = document.getElementsByTagName("article")[0];
@@ -157,6 +157,7 @@ window.onload = function () {
         }
     });
 
+    /*  show right menu*/
     document.getElementsByClassName("add-entry")[0].addEventListener("click", function () {
         var rightMenu = document.getElementById("rightMenu");
         if(rightMenu.style.right != "0px")
