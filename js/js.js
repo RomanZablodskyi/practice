@@ -6,7 +6,12 @@ window.onload = function () {
         dateFields = document.getElementsByClassName("date-field"),
         form = document.getElementsByName("addingForm")[0],
         formInputs = form.getElementsByTagName("input"),
-        checkboxes = document.getElementsByTagName("input");
+        checkboxes = document.getElementsByTagName("input"),
+        searchParams = {
+            text : "",
+            type : [],
+            date : ""
+        };
 
     for(var i = 0; i < list.length; i++)
         for(var key in data){
@@ -115,6 +120,7 @@ window.onload = function () {
         }
         console.log(newObject);
         data.projects.push(newObject);
+        window.info = data;
         window['scroller'].innerHTML = '';
         app.loadProjects();
     });

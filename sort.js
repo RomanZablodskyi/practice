@@ -31,11 +31,11 @@ obj.sortName = function() {
         data.projects = unsortedProjectsByName;
     }
     _clearContent();
-    app.loadProjects();
+    app.loadProjects(data);
 };
 
 let _updateDataProjects = function() {
-    return app.returnData();
+    return typeof window.info == "undefined" ? app.returnData() : window.info;
 };
 
 obj.sortCreated = function() {
