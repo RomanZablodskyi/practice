@@ -1,3 +1,52 @@
+/*  time convertion*/
+function convertDate(dateStr) {
+    if(dateStr != "") {
+        var date = typeof dateStr == Date ? dateStr : new Date(dateStr),
+            day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate(),
+            month = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1),
+            year = date.getFullYear();
+
+        return month + "-" + day + "-" + year;
+    }
+
+    return null;
+}
+function changeClasses(nodeElement, correctClass, newClass) {
+    nodeElement.classList.remove(correctClass);
+    nodeElement.classList.add(newClass);
+}
+
+/*  check if adding form is filled*/
+function checkForm(elem) {
+    var unfilled = true,
+        inputs = elem.getElementsByTagName("input"),
+        listsSelected = elem.getElementsByClassName("selected");
+
+    for(var i = 0; i < inputs.length; i++){
+        if(inputs[i].value == ""){
+            return unfilled;
+        }
+    }
+
+    for(var j = 0; j < listsSelected.length; j++){
+        if(listsSelected[j].textContent == "type:" || listsSelected[j].textContent == "customer:"){
+            return unfilled;
+        }
+    }
+
+    unfilled = false;
+    return unfilled;
+}
+
+/*  create droplist elements*/
+function createListElem(parent, data) {
+    for(var i = 0; i < data.length; i++){
+        var li = document.createElement("li");
+        li.textContent = data[i];
+        parent.appendChild(li);
+    }
+}
+
 window.onload = function () {
 
     var data = app.returnData(),
@@ -132,7 +181,6 @@ window.onload = function () {
        }
     });
 
-
     /*  search by text  */
     document.getElementsByName("search")[0].addEventListener("keydown", function (e) {
         if(e.keyCode == "13"){
@@ -143,7 +191,6 @@ window.onload = function () {
     /*  search by date  */
     document.getElementsByName("dateSearch")[0].addEventListener("change", function () {
         searchParams.date = this.value;
-        console.log(convertDate(this.value));
     });
 
     /*  show/hide left menu*/
@@ -166,49 +213,4 @@ window.onload = function () {
         if(rightMenu.style.right != "0px")
             rightMenu.style.right = "0";
     });
-
-    function changeClasses(nodeElement, correctClass, newClass) {
-        nodeElement.classList.remove(correctClass);
-        nodeElement.classList.add(newClass);
-    }
-
-    /*  check if adding form is filled*/
-    function checkForm(elem) {
-        var unfilled = true,
-            inputs = elem.getElementsByTagName("input"),
-            listsSelected = elem.getElementsByClassName("selected");
-
-        for(var i = 0; i < inputs.length; i++){
-            if(inputs[i].value == ""){
-                return unfilled;
-            }
-        }
-
-        for(var j = 0; j < listsSelected.length; j++){
-            if(listsSelected[j].textContent == "type:" || listsSelected[j].textContent == "customer:"){
-                return unfilled;
-            }
-        }
-
-        unfilled = false;
-        return unfilled;
-    }
-
-    /*  create droplist elements*/
-    function createListElem(parent, data) {
-        for(var i = 0; i < data.length; i++){
-            var li = document.createElement("li");
-            li.textContent = data[i];
-            parent.appendChild(li);
-        }
-    }
-
-    function convertDate(dateStr) {
-        var date = typeof dateStr == Date ? dateStr : new Date(dateStr),
-            day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate(),
-            month = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1),
-            year = date.getFullYear();
-
-        return month + "-" + day + "-" + year;
-    }
 };
