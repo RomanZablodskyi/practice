@@ -5,7 +5,7 @@ window.onload = function () {
         dateFields = document.getElementsByClassName("date-field"),
         form = document.getElementsByName("addingForm")[0],
         formInputs = form.getElementsByTagName("input"),
-        checkboxes = document.getElementsByTagName("input"),
+        inputs = document.getElementsByTagName("input"),
         searchParams = {
             text : "",
             type : [],
@@ -14,7 +14,7 @@ window.onload = function () {
 
     for(var i = 0; i < list.length; i++)
         for(var key in data){
-            if(key != "projects"){
+            if(key != "projects" && data.hasOwnProperty(key)){
                 createListElem(list[i], data[key]);
                 i++;
             }
@@ -36,15 +36,17 @@ window.onload = function () {
             });
     }
 
+    /*  listeners for inputs to check if adding form is filled*/
     for(i = 0; i < formInputs.length; i++){
         formInputs[i].addEventListener("input", function () {
             document.getElementsByName("create")[0].disabled = checkForm(form);
         })
     }
 
-    for(i = 0; i < checkboxes.length; i++){
-        if(checkboxes[i].getAttribute("type") == "checkbox"){
-            checkboxes[i].addEventListener("change", function () {
+    /*  checkboxes listener */
+    for(i = 0; i < inputs.length; i++){
+        if(inputs[i].getAttribute("type") == "checkbox"){
+            inputs[i].addEventListener("change", function () {
                 if(this.checked == true){
                     searchParams.type.push(this.value);
                 }
