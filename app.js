@@ -89,8 +89,8 @@ let _deleteEntry = function(){
     unsortedProjectsByTime = JSON.parse(JSON.stringify(data.projects));
 };
 
-obj.loadProjects = function(info) {
-    let projects = typeof info == "undefined" ? data.projects : info.projects;
+obj.loadProjects = function() {
+    let projects = data.projects;
     let parent = window['scroller'];
     projects.forEach(function(e){
         parent.appendChild(_createRow(e));

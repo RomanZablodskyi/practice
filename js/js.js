@@ -1,7 +1,6 @@
 window.onload = function () {
 
-    var app = require('./app.js', {}),
-        data = app.returnData(),
+    var data = app.returnData(),
         list = document.getElementsByTagName("ul"),
         dateFields = document.getElementsByClassName("date-field"),
         form = document.getElementsByName("addingForm")[0],
@@ -118,9 +117,8 @@ window.onload = function () {
                 pos++;
             }
         }
-        console.log(newObject);
+
         data.projects.push(newObject);
-        window.info = data;
         window['scroller'].innerHTML = '';
         app.loadProjects();
     });

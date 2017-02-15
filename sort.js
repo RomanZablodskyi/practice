@@ -12,7 +12,6 @@ let _clearContent = function() {
 };
 
 obj.sortName = function() {
-    data = _updateDataProjects();
     if (data.projects.length <= 1)
         return;
     if (this.className !== 'sorted') {
@@ -32,15 +31,14 @@ obj.sortName = function() {
         data.projects = unsortedProjectsByName;
     }
     _clearContent();
-    app.loadProjects(data);
+    app.loadProjects();
 };
 
 let _updateDataProjects = function() {
-    return typeof window.info == "undefined" ? app.returnData() : window.info;
+    return app.returnData()
 };
 
 obj.sortCreated = function() {
-    data = _updateDataProjects();
     if (data.projects.length <= 1)
         return;
     if (this.className !== 'sorted') {
@@ -54,7 +52,7 @@ obj.sortCreated = function() {
         this.className = '';
     }
     _clearContent();
-    app.loadProjects(data);
+    app.loadProjects();
 };
 
 let _sortTime = function() {
@@ -65,7 +63,7 @@ let _sortTime = function() {
 
 let _convertDate = function(str) {
     let dateArr = str.split('-');
-    return new Date(dateArr[2], dateArr[1], dateArr[0]);
+    return new Date(dateArr[2], dateArr[0], dateArr[1]);
 };
 
 let _findEl = function(key) {
