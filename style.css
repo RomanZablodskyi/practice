@@ -226,7 +226,6 @@ input, label, li, button, footer p{
     width: 15%;
     top: 0;
     bottom: 50px;
-    min-width: 135px;
     padding: 0 2.1%;
     background-color: #000000;
     overflow-y: scroll;
@@ -389,7 +388,7 @@ button[name="create"]{
     background-color: #e67817;
     font-weight: bold;
     text-align: left;
-    text-indent: 3.8em;
+    text-indent: 1.875em;
     line-height: 1.70em;
 }
 button[name="create"],
