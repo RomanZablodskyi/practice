@@ -1,14 +1,12 @@
 window.onload = function () {
 
-    var data = exports.getJsonData("./projects.json"),
+    var app = require('./app.js', {}),
+        data = app.returnData(),
         list = document.getElementsByTagName("ul"),
         dateFields = document.getElementsByClassName("date-field"),
         form = document.getElementsByName("addingForm")[0],
         formInputs = form.getElementsByTagName("input"),
-        checkboxes = document.getElementsByTagName("input"),
-        searchParams = {
-            type: []
-        };
+        checkboxes = document.getElementsByTagName("input");
 
     for(var i = 0; i < list.length; i++)
         for(var key in data){
@@ -86,21 +84,39 @@ window.onload = function () {
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        var newObject = [],
-            formInputs = this.getElementsByTagName("input"),
-            formLists = this.querySelectorAll(".selected");
+        var formInputs = this.getElementsByTagName("input"),
+            formLists = this.querySelectorAll(".selected"),
+        newObject = {
+            "project name" : "",
+            "due date": "",
+            "created": "",
+            "members": "",
+            "type": "",
+            "status": "",
+            "customer": ""
+        },
+            keys = Object.keys(newObject),
+            pos = 0;
 
         for(var i = 0; i < formInputs.length; i++){
-            if(formInputs[i].value != "")
-                newObject.push(formInputs[i].value);
+            if(formInputs[i].value != "") {
+                newObject[keys[pos]] = formInputs[i].value;
+                pos++;
+            }
         }
 
         for(i = 0; i < formLists.length; i++){
-            if(formLists[i].textContent != "type:" || formLists[i].textContent != "customer:")
-                newObject.push(formLists[i].textContent);
+            if(formLists[i].textContent != "type:" || formLists[i].textContent != "customer:"){
+                if(keys[pos] == "status")
+                    pos++;
+                newObject[keys[pos]] = formLists[i].textContent;
+                pos++;
+            }
         }
-
         console.log(newObject);
+        data.projects.push(newObject);
+        window['scroller'].innerHTML = '';
+        app.loadProjects();
     });
 
     /*  hide right menu*/
