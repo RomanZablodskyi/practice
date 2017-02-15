@@ -12,6 +12,7 @@ let _clearContent = function() {
 };
 
 obj.sortName = function() {
+    data = _updateDataProjects();
     if (data.projects.length <= 1)
         return;
     if (this.className !== 'sorted') {
@@ -39,6 +40,7 @@ let _updateDataProjects = function() {
 };
 
 obj.sortCreated = function() {
+    data = _updateDataProjects();
     if (data.projects.length <= 1)
         return;
     if (this.className !== 'sorted') {
@@ -52,7 +54,7 @@ obj.sortCreated = function() {
         this.className = '';
     }
     _clearContent();
-    app.loadProjects();
+    app.loadProjects(data);
 };
 
 let _sortTime = function() {
