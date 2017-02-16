@@ -1,9 +1,8 @@
 /**
  * Created by Vlad on 15.02.2017.
  */
-window.onload = function () {
 
-    var data = app.returnData(),
+    let data = app.returnData(),
         list = document.getElementsByTagName("ul"),
         dateFields = document.getElementsByClassName("date-field"),
         form = document.getElementsByName("addingForm")[0],
@@ -15,8 +14,8 @@ window.onload = function () {
             date : ""
         };
 
-    for(var i = 0; i < list.length; i++)
-        for(var key in data){
+    for(let i = 0; i < list.length; i++)
+        for(let key in data){
             if(key != "projects" && data.hasOwnProperty(key)){
                 createListElem(list[i], data[key]);
                 i++;
@@ -25,7 +24,7 @@ window.onload = function () {
 
     /*  datepicker  */
     for(i = 0; i < dateFields.length; i++){
-        var elem = dateFields[i].getElementsByTagName("input")[0],
+        let elem = dateFields[i].getElementsByTagName("input")[0],
             pikaday = new Pikaday({
                 field: elem,
                 firstDay: 1,
@@ -50,7 +49,7 @@ window.onload = function () {
                     searchParams.type.push(this.value);
                 }
                 else{
-                    var index = searchParams.type.indexOf(this.value);
+                    let index = searchParams.type.indexOf(this.value);
                     searchParams.type.splice(index, 1);
                 }
             })
@@ -59,13 +58,13 @@ window.onload = function () {
 
     /*  custom drop list */
     for(i = 0; i < list.length; i++){
-        var selectedElem = list[i].querySelector(".selected"),
+        let selectedElem = list[i].querySelector(".selected"),
             listElems = list[i].getElementsByTagName("li");
 
-        for(var j = 0; j < listElems.length; j++){
+        for(let j = 0; j < listElems.length; j++){
             if(!listElems[j].classList.contains("selected")){
                 listElems[j].addEventListener("click", function () {
-                    var parent = this.parentElement;
+                    let parent = this.parentElement;
 
                     parent.querySelector(".selected").textContent = this.textContent;
                     changeClasses(parent, "opened", "closed");
@@ -76,7 +75,9 @@ window.onload = function () {
         }
 
         selectedElem.addEventListener("click", function () {
-            var parent = this.parentElement;
+            let parent = this.parentElement;
+            parent.classList.toggle("closed");
+            parent.classList.toggle("opened");
             if(parent.classList.contains("closed")){
                 changeClasses(parent, "closed", "opened");
             }else{
@@ -89,7 +90,7 @@ window.onload = function () {
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        var formInputs = this.getElementsByTagName("input"),
+        let formInputs = this.getElementsByTagName("input"),
             formLists = this.querySelectorAll(".selected"),
             newObject = {
                 "project name" : "",
@@ -103,7 +104,7 @@ window.onload = function () {
             keys = Object.keys(newObject),
             pos = 0;
 
-        for(var i = 0; i < formInputs.length; i++){
+        for(let i = 0; i < formInputs.length; i++){
             if(formInputs[i].value != "") {
                 newObject[keys[pos]] = formInputs[i].value;
                 pos++;
@@ -122,11 +123,12 @@ window.onload = function () {
         data.projects.push(newObject);
         window['scroller'].innerHTML = '';
         app.loadProjects();
+        myScroll.refresh();
     });
 
     /*  hide right menu*/
     document.body.addEventListener("click", function (e) {
-        var screenWidth = document.documentElement.clientWidth,
+        let screenWidth = document.documentElement.clientWidth,
             mouseCoordX = e.pageX,
             rightMenu = document.getElementById("rightMenu");
 
@@ -138,34 +140,47 @@ window.onload = function () {
 
     /*  search by text  */
     document.getElementsByName("search")[0].addEventListener("keydown", function (e) {
+        console.log(e.keyCode);
         if(e.keyCode == "13"){
-            searchParams.text = this.value;
+            app.uploadSaveData();
+            if (this.value || searchParams.type.length > 0 ||
+                (searchParams.date != 'NaN-NaN-NaN' && searchParams.date != '')) {
+                searchParams.text = this.value;
+                app.search(searchParams);
+                console.log(this.value);
+            }
         }
     });
 
     /*  search by date  */
     document.getElementsByName("dateSearch")[0].addEventListener("change", function () {
-        searchParams.date = this.value;
-        console.log(convertDate(this.value));
+        searchParams.date = convertDate(this.value);
+
     });
 
+    let addBth = document.getElementsByClassName('add-entry')[0];
     /*  show/hide left menu*/
     document.getElementsByClassName("control-left-menu")[0].addEventListener("click", function () {
-        var leftMenu = document.getElementById("leftMenu"),
+        let leftMenu = document.getElementById("leftMenu"),
             article = document.getElementsByTagName("article")[0];
         if(leftMenu.style.left != "0px"){
+            app.saveDataForSearch();
+             addBth.setAttribute('disabled', 'true');
             leftMenu.style.left = "0";
             article.style.width = "77.8%";
         }
         else{
+            addBth.removeAttribute('disabled');
+            dateFields[0].childNodes[1].value = '';
+            app.uploadSaveData();
             leftMenu.style.left = "-19.2%";
             article.style.width = "94%";
         }
     });
 
     /*  show right menu*/
-    document.getElementsByClassName("add-entry")[0].addEventListener("click", function () {
-        var rightMenu = document.getElementById("rightMenu");
+    addBth.addEventListener("click", function () {
+        let rightMenu = document.getElementById("rightMenu");
         if(rightMenu.style.right != "0px")
             rightMenu.style.right = "0";
     });
@@ -177,17 +192,17 @@ window.onload = function () {
 
     /*  check if adding form is filled*/
     function checkForm(elem) {
-        var unfilled = true,
+        let unfilled = true,
             inputs = elem.getElementsByTagName("input"),
             listsSelected = elem.getElementsByClassName("selected");
 
-        for(var i = 0; i < inputs.length; i++){
-            if(inputs[i].value == ""){
+        for(let i = 0; i < inputs.length; i++){
+            if(inputs[i].value.trim() === ""){
                 return unfilled;
             }
         }
 
-        for(var j = 0; j < listsSelected.length; j++){
+        for(let j = 0; j < listsSelected.length; j++){
             if(listsSelected[j].textContent == "type:" || listsSelected[j].textContent == "customer:"){
                 return unfilled;
             }
@@ -199,19 +214,18 @@ window.onload = function () {
 
     /*  create droplist elements*/
     function createListElem(parent, data) {
-        for(var i = 0; i < data.length; i++){
-            var li = document.createElement("li");
+        for(let i = 0; i < data.length; i++){
+            let li = document.createElement("li");
             li.textContent = data[i];
             parent.appendChild(li);
         }
     }
 
     function convertDate(dateStr) {
-        var date = typeof dateStr == Date ? dateStr : new Date(dateStr),
+        let date = typeof dateStr == Date ? dateStr : new Date(dateStr),
             day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate(),
             month = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1),
             year = date.getFullYear();
 
         return month + "-" + day + "-" + year;
     }
-};

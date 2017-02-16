@@ -7,6 +7,10 @@ let data,
     unsortedProjectsByName,
     unsortedProjectsByTime;
 
+const DAYPOS = 0,
+    MOUNTHPOS = 1,
+    YEARPOS = 2;
+
 let _clearContent = function() {
     window['scroller'].innerHTML = '';
 };
@@ -15,10 +19,10 @@ obj.sortName = function() {
     data = app.returnData();
     if (data.projects.length <= 1)
         return;
-    if (this.className !== 'sorted') {
+    if (!this.classList.contains('sorted')) {
         let arr = _getNames(),
             projects = [];
-        this.className = 'sorted';
+        this.classList.add('sorted');
         //Updating data in case if smt was deleted or added
         unsortedProjectsByName = _updateDataProjects().projects;
         arr.sort();
@@ -26,10 +30,11 @@ obj.sortName = function() {
             projects.push(_findEl(e));
         });
         data.projects = projects;
+
     } else {
         if (unsortedProjectsByName.length !== _updateDataProjects().projects.length)
             unsortedProjectsByName = _updateDataProjects().projects;
-        this.className = '';
+        this.classList.remove('sorted');
         data.projects = unsortedProjectsByName;
     }
     _clearContent();
@@ -44,16 +49,16 @@ obj.sortCreated = function() {
     data = app.returnData();
     if (data.projects.length <= 1)
         return;
-    if (this.className !== 'sorted') {
+    if (!this.classList.contains('sorted')) {
         //Creating unlinked copy of object
         unsortedProjectsByTime =  JSON.parse(JSON.stringify(_updateDataProjects().projects));
-        this.className = 'sorted';
+        this.classList.add('sorted');
         data.projects = _sortTime();
     } else {
         if (unsortedProjectsByTime.length !== _updateDataProjects().projects.length)
             unsortedProjectsByTime = JSON.parse(JSON.stringify(_updateDataProjects().projects));
         data.projects = unsortedProjectsByTime;
-        this.className = '';
+        this.classList.remove('sorted');
     }
     _clearContent();
     app.loadProjects();
@@ -61,23 +66,20 @@ obj.sortCreated = function() {
 
 let _sortTime = function() {
     return data.projects.sort(function(a, b) {
+        console.log(a);
         return _convertDate(a['created']).getTime() - _convertDate(b['created']).getTime();
     });
 };
 
 let _convertDate = function(str) {
     let dateArr = str.split('-');
-    return new Date(dateArr[2], dateArr[0], dateArr[1]);
+    return new Date(dateArr[YEARPOS], dateArr[DAYPOS], dateArr[MOUNTHPOS]);
 };
 
 let _findEl = function(key) {
-    let el;
-    data.projects.forEach(function (e) {
-        if (key == e['project name']) {
-            el = e;
-        }
-    });
-    return el;
+    return data.projects.filter(function (e) {
+        return key == e['project name'];
+    })[0];
 };
 
 let _getNames= function() {

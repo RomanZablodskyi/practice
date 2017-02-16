@@ -27,6 +27,8 @@ document.addEventListener('touchmove', function (e) { e.preventDefault(); }, isP
         passive: false
 } : false);
 
+
+
 columnHeadName.addEventListener('click',sort.sortName);
 columnHeadCreated.addEventListener('click', sort.sortCreated);
 
