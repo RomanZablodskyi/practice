@@ -1,0 +1,52 @@
+{
+  "projects": [
+    {
+      "project name": "n",
+      "due date": "09-02-2018",
+      "created": "12-03-2016",
+      "members": "Ole",
+      "type": "desctop",
+      "status": "closed",
+      "customer": "David"
+    },
+    {
+      "project name": "a",
+      "due date": "09-02-2018",
+      "created": "12-03-2017",
+      "members": "Ole Nole, Bobo Obob",
+      "type": "web",
+      "status": "in process",
+      "customer": "John"
+    },
+    {
+      "project name": "b",
+      "due date": "04-01-2017",
+      "created": "12-03-2015",
+      "members": "Ole Nole, Bobo Obob",
+      "type": "web",
+      "status": "in process",
+      "customer": "John"
+    },
+    {
+      "project name": "r",
+      "due date": "04-01-2020",
+      "created": "12-03-2015",
+      "members": "Ole Nole, Bobo Obob",
+      "type": "web",
+      "status": "in process",
+      "customer": "John"
+    }
+  ],
+  "type": [
+    "web",
+    "mobile",
+    "desktop",
+    "support"
+  ],
+  "customers": [
+    "John",
+    "David",
+    "Bill",
+    "Alehandro Rohas"
+  ]
+}
